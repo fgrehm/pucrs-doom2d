@@ -148,7 +148,7 @@ void PlayState::handleEvents(cgf::Game* game)
 void PlayState::update(cgf::Game* game)
 {
     screen = game->getScreen();
-    player.update(game->getUpdateInterval());
+    checkCollision(2, game, &player);
     centerMapOnPlayer();
 }
 
