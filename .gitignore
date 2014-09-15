@@ -20,3 +20,6 @@
 *.out
 *.app
 bin/framework2
+
+# Codeblock stuff
+build/codeblocks/framework.depend
