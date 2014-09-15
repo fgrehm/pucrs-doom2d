@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:b817cd7ee04814c2d86b318f6cb43463$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="smurf-sprite.png" width="803" height="404">
+    <sprite n="smurf01.png" x="5" y="5" w="128" h="128"/>
+    <sprite n="smurf02.png" x="138" y="5" w="128" h="128"/>
+    <sprite n="smurf03.png" x="271" y="5" w="128" h="128"/>
+    <sprite n="smurf04.png" x="404" y="5" w="128" h="128"/>
+    <sprite n="smurf05.png" x="537" y="5" w="128" h="128"/>
+    <sprite n="smurf06.png" x="670" y="5" w="128" h="128"/>
+    <sprite n="smurf07.png" x="5" y="138" w="128" h="128"/>
+    <sprite n="smurf08.png" x="138" y="138" w="128" h="128"/>
+    <sprite n="smurf09.png" x="271" y="138" w="128" h="128"/>
+    <sprite n="smurf10.png" x="404" y="138" w="128" h="128"/>
+    <sprite n="smurf11.png" x="537" y="138" w="128" h="128"/>
+    <sprite n="smurf12.png" x="670" y="138" w="128" h="128"/>
+    <sprite n="smurf13.png" x="5" y="271" w="128" h="128"/>
+    <sprite n="smurf14.png" x="138" y="271" w="128" h="128"/>
+    <sprite n="smurf15.png" x="271" y="271" w="128" h="128"/>
+    <sprite n="smurf16.png" x="404" y="271" w="128" h="128"/>
+</TextureAtlas>

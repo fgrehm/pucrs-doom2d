@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="framework2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug-Linux">
+				<Option output="../../bin/framework2" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin" />
+				<Option object_output="../../bin" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../lib/Box2D-2.1.0/lib-Linux32" />
+					<Add directory="../../lib/SFML-2.0/lib-Linux64" />
+				</Linker>
+			</Target>
+			<Target title="Release-Linux">
+				<Option output="../../bin/framework2" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin" />
+				<Option object_output="../../bin" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../../lib/Box2D-2.1.0/lib-Linux32" />
+					<Add directory="../../lib/SFML-2.0/lib-Linux64" />
+				</Linker>
+			</Target>
+			<Target title="Debug-Windows">
+				<Option output="../../bin/framework2" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin" />
+				<Option object_output="../../bin" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="libz" />
+					<Add directory="../../lib/Box2D-2.1.0/lib-Windows-CB" />
+					<Add directory="../../lib/SFML-2.0/lib-Windows" />
+				</Linker>
+			</Target>
+			<Target title="Release-Windows">
+				<Option output="../../bin/framework2" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../bin" />
+				<Option object_output="../../bin" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="libz" />
+					<Add directory="../../lib/Box2D-2.1.0/lib-Windows-CB" />
+					<Add directory="../../lib/SFML-2.0/lib-Windows" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add directory="../../include" />
+			<Add directory="../../include/pugixml" />
+			<Add directory="../../lib/SFML-2.0/include" />
+			<Add directory="../../include/tmxloader" />
+		</Compiler>
+		<Linker>
+			<Add library="sfml-graphics" />
+			<Add library="sfml-window" />
+			<Add library="sfml-system" />
+			<Add library="z" />
+		</Linker>
+		<Unit filename="../../include/ClockHUD.h" />
+		<Unit filename="../../include/FrameClock.h" />
+		<Unit filename="../../include/Game.h" />
+		<Unit filename="../../include/GameState.h" />
+		<Unit filename="../../include/InputManager.h" />
+		<Unit filename="../../include/MenuState.h" />
+		<Unit filename="../../include/PlayState.h" />
+		<Unit filename="../../include/Sprite.h" />
+		<Unit filename="../../include/TextureManager.h" />
+		<Unit filename="../../include/pugixml/pugiconfig.hpp" />
+		<Unit filename="../../include/pugixml/pugixml.hpp" />
+		<Unit filename="../../include/tmxloader/Helpers.h" />
+		<Unit filename="../../include/tmxloader/MapLoader.h" />
+		<Unit filename="../../include/tmxloader/MapObject.h" />
+		<Unit filename="../../include/tmxloader/QuadTreeNode.h" />
+		<Unit filename="../../include/tmxloader/zconf.h" />
+		<Unit filename="../../include/tmxloader/zlib.h" />
+		<Unit filename="../../source/Game.cpp" />
+		<Unit filename="../../source/InputManager.cpp" />
+		<Unit filename="../../source/MenuState.cpp" />
+		<Unit filename="../../source/PlayState.cpp" />
+		<Unit filename="../../source/Sprite.cpp" />
+		<Unit filename="../../source/TextureManager.cpp" />
+		<Unit filename="../../source/main.cpp" />
+		<Unit filename="../../source/pugixml/pugixml.cpp" />
+		<Unit filename="../../source/tmxloader/MapLoaderPrivate.cpp" />
+		<Unit filename="../../source/tmxloader/MapLoaderPublic.cpp" />
+		<Unit filename="../../source/tmxloader/QuadTreeNode.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

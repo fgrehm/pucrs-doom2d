@@ -1,0 +1,5 @@
+Para Snow Leopard: é preciso COMPILAR o gcc 4.7 (no mínimo) - usar Homebrew, por ex -
+e copiar os arquivos do diretório mkspecs para /usr/local/Cellar/qt/4.7.2/mkspecs/
+
+Para Lion e Mountain Lion: o compilador clang++ já suporta C++11
+
