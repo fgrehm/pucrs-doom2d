@@ -1,7 +1,7 @@
 doom2d
 ======
 
-A work in progress 2D version of Doom I, using a framework provided by Marcelo Cohen for the Digital Entertainment class at PUCRS.
+A work in progress 2D version of Doom I, using a framework provided by Prof. Marcelo Cohen for the Digital Entertainment class at PUCRS.
 
 # Initial setup
 
