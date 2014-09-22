@@ -24,6 +24,12 @@ void PlayState::init()
     player.loadAnimation("data/img/hunteranim.xml");
     player.setAnimRate(15);
 
+    bullet.load("data/img/Char27.png");
+    bullet.setScale(0.5, 0.5);
+    bullet.setXspeed(100);
+    bullet.setMirror(true);
+    bullet.setPosition(100, 100);
+
     map = new tmx::MapLoader("data/maps");
     map->Load("dungeon-tilesets2.tmx");
 
@@ -150,6 +156,11 @@ void PlayState::update(cgf::Game* game)
     screen = game->getScreen();
     checkCollision(2, game, &player);
     centerMapOnPlayer();
+    if (checkCollision(2, game, &bullet)) {
+        cout << "Collision with map" << endl;
+        bullet.setXspeed(bullet.getXspeed() * -1);
+        bullet.setMirror(!bullet.getMirror());
+    }
 }
 
 bool PlayState::checkCollision(u_int8_t layer, cgf::Game* game, cgf::Sprite* obj)
@@ -368,6 +379,7 @@ void PlayState::draw(cgf::Game* game)
 
     map->Draw(*screen, 0);
     screen->draw(player);
+    screen->draw(bullet);
     map->Draw(*screen, 1);
 
     screen->draw(text);

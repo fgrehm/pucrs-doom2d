@@ -54,6 +54,7 @@ class PlayState : public cgf::GameState
     int x, y;
     int dirx, diry;
     cgf::Sprite player;
+    cgf::Sprite bullet;
     sf::RenderWindow* screen;
     cgf::InputManager* im;
     tmx::MapLoader* map;
