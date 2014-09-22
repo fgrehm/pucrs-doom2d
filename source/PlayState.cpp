@@ -11,6 +11,7 @@
 #include <cmath>
 #include "Game.h"
 #include "PlayState.h"
+#include "MenuState.h"
 #include "InputManager.h"
 
 PlayState PlayState::m_PlayState;
@@ -25,7 +26,6 @@ void PlayState::init()
     player.setAnimRate(15);
 
     bullet.load("data/img/Char27.png");
-    bullet.setScale(0.5, 0.5);
     bullet.setXspeed(100);
     bullet.setMirror(true);
     bullet.setPosition(100, 100);
@@ -157,9 +157,10 @@ void PlayState::update(cgf::Game* game)
     checkCollision(2, game, &player);
     centerMapOnPlayer();
     if (checkCollision(2, game, &bullet)) {
-        cout << "Collision with map" << endl;
         bullet.setXspeed(bullet.getXspeed() * -1);
         bullet.setMirror(!bullet.getMirror());
+    } else if (bullet.circleCollision(player)) {
+        game->changeState(MenuState::instance());
     }
 }
 
