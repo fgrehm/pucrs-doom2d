@@ -91,6 +91,8 @@ void PlayState::handleEvents(cgf::Game* game)
         if(event.type == sf::Event::KeyPressed)
             if(event.key.code == sf::Keyboard::S)
                 game->toggleStats();
+            else if (event.key.code == sf::Keyboard::Space)
+                cout << "FIRE!" << endl;
     }
 
     dirx = diry = 0;
