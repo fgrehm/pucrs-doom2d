@@ -60,6 +60,9 @@ void PlayState::init()
     text.setColor(sf::Color::Red);
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
+    ammo = 10;
+    bullets.reserve(ammo);
+
 	cout << "PlayState Init Successful" << endl;
 }
 
@@ -92,7 +95,7 @@ void PlayState::handleEvents(cgf::Game* game)
             if(event.key.code == sf::Keyboard::S)
                 game->toggleStats();
             else if (event.key.code == sf::Keyboard::Space)
-                cout << "FIRE!" << endl;
+                shoot(game);
     }
 
     dirx = diry = 0;
@@ -151,6 +154,20 @@ void PlayState::handleEvents(cgf::Game* game)
 
     player.setXspeed(dirx*100);
     player.setYspeed(diry*100);
+}
+
+void PlayState::shoot(cgf::Game* game)
+{
+    if (ammo == 0) {
+        //bullet.load("data/img/Char27.png");
+        //bullet.setXspeed(100);
+        //bullet.setMirror(true);
+        //bullet.setPosition(100, 100);
+        cout << "Out of ammo" << endl;
+    } else {
+        ammo--;
+        cout << "SHOOT!" << endl;
+    }
 }
 
 void PlayState::update(cgf::Game* game)
