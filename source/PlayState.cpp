@@ -30,6 +30,8 @@ void PlayState::init()
     bullet.setMirror(true);
     bullet.setPosition(100, 100);
 
+    bullets.clear();
+
     map = new tmx::MapLoader("data/maps");
     map->Load("dungeon-tilesets2.tmx");
 
@@ -61,7 +63,6 @@ void PlayState::init()
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
     ammo = 10;
-    bullets.reserve(ammo);
 
 	cout << "PlayState Init Successful" << endl;
 }
@@ -86,6 +87,7 @@ void PlayState::handleEvents(cgf::Game* game)
 {
     sf::Event event;
     sf::View view = screen->getView();
+    bool performShoot = false;
 
     while (screen->pollEvent(event))
     {
@@ -95,7 +97,8 @@ void PlayState::handleEvents(cgf::Game* game)
             if(event.key.code == sf::Keyboard::S)
                 game->toggleStats();
             else if (event.key.code == sf::Keyboard::Space)
-                shoot(game);
+                // Keep track if we want to shoot
+                performShoot = true;
     }
 
     dirx = diry = 0;
@@ -154,18 +157,23 @@ void PlayState::handleEvents(cgf::Game* game)
 
     player.setXspeed(dirx*100);
     player.setYspeed(diry*100);
+
+    if (performShoot)
+        shoot(game);
 }
 
 void PlayState::shoot(cgf::Game* game)
 {
     if (ammo == 0) {
-        //bullet.load("data/img/Char27.png");
-        //bullet.setXspeed(100);
-        //bullet.setMirror(true);
-        //bullet.setPosition(100, 100);
         cout << "Out of ammo" << endl;
     } else {
         ammo--;
+        cgf::Sprite newBullet;
+        newBullet.load("data/img/Char27.png");
+        newBullet.setMirror(true);
+        newBullet.setPosition(100, 100+ammo*10);
+        newBullet.setXspeed(100);
+        bullets.push_back(newBullet);
         cout << "SHOOT!" << endl;
     }
 }
@@ -180,6 +188,11 @@ void PlayState::update(cgf::Game* game)
         bullet.setMirror(!bullet.getMirror());
     } else if (bullet.circleCollision(player)) {
         game->changeState(MenuState::instance());
+    }
+
+    for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
+        bullets[i].update(game->getUpdateInterval(), true);
+        screen->draw(bullets[i]);
     }
 }
 
@@ -400,6 +413,10 @@ void PlayState::draw(cgf::Game* game)
     map->Draw(*screen, 0);
     screen->draw(player);
     screen->draw(bullet);
+
+    for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
+        screen->draw(bullets[i]);
+    }
     map->Draw(*screen, 1);
 
     screen->draw(text);
