@@ -306,7 +306,7 @@ bool PlayState::checkCollision(u_int8_t layer, cgf::Game* game, cgf::Sprite* obj
         y1 = ((py + vy) / tilesize.y);
         y2 = ((py + vy + objsize.y-1) / tilesize.y);
 
-        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 < mapsize.y)
+        if (x1 >= 0 && x2 < mapsize.x && y1 >= 0 && y2 <= mapsize.y)
         {
             if (vy > 0)
             {
