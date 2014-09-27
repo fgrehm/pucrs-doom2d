@@ -62,7 +62,7 @@ void PlayState::init()
     text.setColor(sf::Color::Red);
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
-    ammo = 10;
+    ammo = 30;
 
 	cout << "PlayState Init Successful" << endl;
 }
@@ -170,9 +170,13 @@ void PlayState::shoot(cgf::Game* game)
         ammo--;
         cgf::Sprite newBullet;
         newBullet.load("data/img/Char27.png");
+        newBullet.scale(0.5, 0.5);
         newBullet.setMirror(true);
-        newBullet.setPosition(100, 100+ammo*10);
-        newBullet.setXspeed(100);
+        newBullet.setPosition(player.getPosition());
+        newBullet.setXspeed(dirx * 100);
+        newBullet.setYspeed(diry * 100);
+        if (dirx == 0 && diry == 0)
+            newBullet.setYspeed(100);
         bullets.push_back(newBullet);
         cout << "SHOOT!" << endl;
     }
@@ -191,8 +195,14 @@ void PlayState::update(cgf::Game* game)
     }
 
     for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
-        bullets[i].update(game->getUpdateInterval(), true);
-        screen->draw(bullets[i]);
+        if (checkCollision(2, game, &bullets[i])) {
+            // Remove bullet from list and adjust counter
+            bullets.erase(bullets.begin() + i);
+            i--;
+        } else {
+            bullets[i].update(game->getUpdateInterval(), true);
+            screen->draw(bullets[i]);
+        }
     }
 }
 
