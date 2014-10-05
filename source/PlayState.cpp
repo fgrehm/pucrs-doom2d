@@ -25,15 +25,16 @@ void PlayState::init()
     player.loadAnimation("data/img/hunteranim.xml");
     player.setAnimRate(15);
 
-    bullet.load("data/img/Char27.png");
-    bullet.setXspeed(100);
-    bullet.setMirror(true);
-    bullet.setPosition(100, 100);
+    //bullet.load("data/img/Char27.png");
+    //bullet.setXspeed(100);
+    //bullet.setMirror(true);
+    //bullet.setPosition(100, 100);
 
     bullets.clear();
 
     map = new tmx::MapLoader("data/maps");
-    map->Load("dungeon-tilesets2.tmx");
+    //map->Load("dungeon-tilesets2.tmx");
+    map->Load("level1.tmx");
 
     dirx = 0; // direção do sprite: para a direita (1), esquerda (-1)
     diry = 0;
@@ -56,11 +57,11 @@ void PlayState::init()
     }
 
     // select the font
-    text.setFont(font);
-    text.setString(L"Teste de texto gráfico");
-    text.setCharacterSize(24); // in pixels, not points!
-    text.setColor(sf::Color::Red);
-    text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+    //text.setFont(font);
+    //text.setString(L"Teste de texto gráfico");
+    //text.setCharacterSize(24); // in pixels, not points!
+    //text.setColor(sf::Color::Red);
+    //text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
     ammo = 30;
 
@@ -186,12 +187,12 @@ void PlayState::update(cgf::Game* game)
     screen = game->getScreen();
     checkCollision(2, game, &player);
     centerMapOnPlayer();
-    if (checkCollision(2, game, &bullet)) {
+    /*if (checkCollision(2, game, &bullet)) {
         bullet.setXspeed(bullet.getXspeed() * -1);
         bullet.setMirror(!bullet.getMirror());
     } else if (bullet.circleCollision(player)) {
         game->changeState(MenuState::instance());
-    }
+    }*/
 
     for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
         if (checkCollision(2, game, &bullets[i])) {
@@ -422,12 +423,12 @@ void PlayState::draw(cgf::Game* game)
 
     map->Draw(*screen, 0);
     screen->draw(player);
-    screen->draw(bullet);
+    //screen->draw(bullet);
 
     for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
         screen->draw(bullets[i]);
     }
     map->Draw(*screen, 1);
 
-    screen->draw(text);
+    //screen->draw(text);
 }

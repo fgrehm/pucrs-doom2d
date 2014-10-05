@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 {
     cgf::Game game(5,30);
 
-	game.init("Framework com estados, sprites e tiling",800,600,false);
+	game.init("Doom2d",800,600,false);
 
     game.changeState(MenuState::instance());
 

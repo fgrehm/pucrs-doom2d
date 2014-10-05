@@ -25,7 +25,7 @@ using namespace std;
 
 void MenuState::init()
 {
-    menuSprite.load("data/img/menu.png"); // load menu state bitmap
+    menuSprite.load("data/img/menudoom.png"); // load menu state bitmap
     cout << "MenuState Init Successful" << endl;
 }
 
@@ -61,7 +61,7 @@ void MenuState::handleEvents(cgf::Game* game)
 
             // key pressed
         case sf::Event::KeyPressed:
-            if(event.key.code == sf::Keyboard::Space)
+            if(event.key.code == sf::Keyboard::Return)
                 game->changeState(PlayState::instance());
             if(event.key.code == sf::Keyboard::Escape)
                 game->quit();
@@ -85,7 +85,7 @@ void MenuState::update(cgf::Game* game)
 
 void MenuState::draw(cgf::Game *game)
 {
-    menuSprite.setPosition(50,50);
+    menuSprite.setPosition(0,0);
 //    menuSprite->draw(game->getScreen());
     game->getScreen()->draw(menuSprite);
 }
