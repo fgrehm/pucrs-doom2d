@@ -24,3 +24,5 @@ bin/framework2
 # Codeblock stuff
 build/codeblocks/framework.depend
 build/codeblocks/framework.layout
+bin/data/img/menudoom.png
+bin/data/maps/basedoom.png

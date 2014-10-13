@@ -90,16 +90,21 @@ void PlayState::handleEvents(cgf::Game* game)
     sf::View view = screen->getView();
     bool performShoot = false;
 
-    while (screen->pollEvent(event))
-    {
-        if(event.type == sf::Event::Closed)
+    while (screen->pollEvent(event)){
+
+        if(event.type == sf::Event::Closed){
             game->quit();
-        if(event.type == sf::Event::KeyPressed)
-            if(event.key.code == sf::Keyboard::S)
+        }
+
+        if(event.type == sf::Event::KeyPressed){
+
+            if(event.key.code == sf::Keyboard::S){
                 game->toggleStats();
-            else if (event.key.code == sf::Keyboard::Space)
-                // Keep track if we want to shoot
-                performShoot = true;
+            } else if (event.key.code == sf::Keyboard::LControl){
+                performShoot = true; // Keep track if we want to shoot
+            }
+
+        }
     }
 
     dirx = diry = 0;
