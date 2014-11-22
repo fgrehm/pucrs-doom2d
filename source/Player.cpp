@@ -3,7 +3,7 @@
 
 Player::Player(Projectiles *projs):
 projectiles(projs),
-inventory(projectiles),
+inventory(projs),
 pdir(D2DEDIR_DOWN)
 {
 
@@ -68,28 +68,14 @@ void Player::impulseHalt(){
 
 void Player::impulseShoot()
 {
-
     sf::Vector2f ppos = psprite->getPosition();
     inventory.getSelectedWeapon()->fire(ppos.x, ppos.y, pdir);
-
-    /*if (ammo == 0) {
-        cout << "Out of ammo" << endl;
-    } else {
-        ammo--;
-        cgf::Sprite newBullet;
-        newBullet.load("data/img/Char27.png");
-        newBullet.scale(0.5, 0.5);
-        newBullet.setPosition(player.getPosition());
-        newBullet.setXspeed(dirx * 150);
-        newBullet.setYspeed(diry * 150);
-        if (dirx == 0 && diry == 0)
-            newBullet.setYspeed(100);
-        bullets.push_back(newBullet);
-        cout << "SHOOT!" << endl;
-    }*/
-
 }
 
 void Player::draw(cgf::Game* game){
     game->getScreen()->draw(*psprite);
+}
+
+const sf::Vector2f& Player::getPosition(){
+    return psprite->getPosition();
 }

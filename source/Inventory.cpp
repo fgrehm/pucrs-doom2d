@@ -2,10 +2,10 @@
 #include "Inventory.h"
 
 Inventory::Inventory(Projectiles *projs):
-projectiles(projs),
 shotgun(0),
 selected(0)
 {
+    projectiles = projs;
 }
 
 Inventory::~Inventory(){

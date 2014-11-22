@@ -10,6 +10,8 @@
 #include "Projectiles.h"
 #include "Inventory.h"
 
+#include <SFML/System/Vector2.hpp>
+
 class Player {
 
 public:
@@ -28,6 +30,8 @@ public:
     void impulseHalt();
 
     void impulseShoot();
+
+    const sf::Vector2f& getPosition();
 
     Inventory inventory;
 

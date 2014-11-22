@@ -58,13 +58,10 @@ private:
     void centerMapOnPlayer();
 
     bool checkCollision(u_int8_t layer, cgf::Game* game, cgf::Sprite* obj);
-    void shoot(cgf::Game* game);
 
     int x, y;
     int dirx, diry;
     int ammo;
-    std::vector<cgf::Sprite> bullets;
-    cgf::Sprite bullet;
     sf::RenderWindow* screen;
     cgf::InputManager* im;
     tmx::MapLoader* map;

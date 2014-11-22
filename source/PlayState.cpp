@@ -40,8 +40,6 @@ void PlayState::init()
     //bullet.setMirror(true);
     //bullet.setPosition(100, 100);
 
-    bullets.clear();
-
     map = new tmx::MapLoader("data/maps");
     //map->Load("dungeon-tilesets2.tmx");
     map->Load("level1.tmx");
@@ -126,7 +124,8 @@ void PlayState::update(cgf::Game* game)
 {
     screen = game->getScreen();
     checkCollision(2, game, player->getSprite());
-    //centerMapOnPlayer();
+    centerMapOnPlayer();
+
     /*if (checkCollision(2, game, &bullet)) {
         bullet.setXspeed(bullet.getXspeed() * -1);
         bullet.setMirror(!bullet.getMirror());
@@ -134,7 +133,7 @@ void PlayState::update(cgf::Game* game)
         game->changeState(MenuState::instance());
     }*/
 
-    for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
+    /*for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
         if (checkCollision(2, game, &bullets[i])) {
             cout << "Bullet " << i << " collided" << endl;
             // Remove bullet from list and adjust counter
@@ -144,7 +143,8 @@ void PlayState::update(cgf::Game* game)
             bullets[i].update(game->getUpdateInterval(), true);
             screen->draw(bullets[i]);
         }
-    }
+    }*/
+
 }
 
 bool PlayState::checkCollision(u_int8_t layer, cgf::Game* game, cgf::Sprite* obj)
@@ -328,7 +328,6 @@ sf::Uint16 PlayState::getCellFromMap(uint8_t layernum, float x, float y)
     return layer.tiles[row*mapsize.x + col].gid;
 }
 
-#if 0
 void PlayState::centerMapOnPlayer()
 {
     sf::View view = screen->getView();
@@ -336,7 +335,7 @@ void PlayState::centerMapOnPlayer()
     sf::Vector2f viewsize = view.getSize();
     viewsize.x /= 2;
     viewsize.y /= 2;
-    sf::Vector2f pos = player.getPosition();
+    sf::Vector2f pos = player->getPosition();
 
     float panX = viewsize.x; // minimum pan
     if(pos.x >= viewsize.x)
@@ -355,7 +354,6 @@ void PlayState::centerMapOnPlayer()
     view.setCenter(sf::Vector2f(panX,panY));
     screen->setView(view);
 }
-#endif
 
 void PlayState::draw(cgf::Game* game)
 {
@@ -365,11 +363,7 @@ void PlayState::draw(cgf::Game* game)
 
     map->Draw(*screen, 0);
     player->draw(game);
-    //screen->draw(bullet);
-
-    for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
-        screen->draw(bullets[i]);
-    }
+    projectiles->draw(game);
     map->Draw(*screen, 1);
 
     //screen->draw(text);

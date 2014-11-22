@@ -11,5 +11,8 @@ Shotgun::~Shotgun(){
 }
 
 void Shotgun::fire(int x, int y, int dir){
-    projectiles->spawnNew(new Pellets(x, y, dir));
+    if (ammo > 0){
+        projectiles->spawnNew(new Pellets(x, y, dir));
+        ammo--;
+    }
 }
