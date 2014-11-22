@@ -83,6 +83,7 @@
 			<Add library="z" />
 		</Linker>
 		<Unit filename="../../include/ClockHUD.h" />
+		<Unit filename="../../include/D2dedir.h" />
 		<Unit filename="../../include/FrameClock.h" />
 		<Unit filename="../../include/Game.h" />
 		<Unit filename="../../include/GameState.h" />
@@ -90,13 +91,16 @@
 		<Unit filename="../../include/InvItem.h" />
 		<Unit filename="../../include/Inventory.h" />
 		<Unit filename="../../include/MenuState.h" />
+		<Unit filename="../../include/Pellets.h" />
 		<Unit filename="../../include/PlayState.h" />
 		<Unit filename="../../include/Player.h" />
 		<Unit filename="../../include/PlayerDriver.h" />
 		<Unit filename="../../include/Projectile.h" />
 		<Unit filename="../../include/Projectiles.h" />
+		<Unit filename="../../include/Shotgun.h" />
 		<Unit filename="../../include/Sprite.h" />
 		<Unit filename="../../include/TextureManager.h" />
+		<Unit filename="../../include/Weapon.h" />
 		<Unit filename="../../include/pugixml/pugiconfig.hpp" />
 		<Unit filename="../../include/pugixml/pugixml.hpp" />
 		<Unit filename="../../include/tmxloader/Helpers.h" />
@@ -109,12 +113,16 @@
 		<Unit filename="../../source/InputManager.cpp" />
 		<Unit filename="../../source/Inventory.cpp" />
 		<Unit filename="../../source/MenuState.cpp" />
+		<Unit filename="../../source/Pellets.cpp" />
 		<Unit filename="../../source/PlayState.cpp" />
 		<Unit filename="../../source/Player.cpp" />
 		<Unit filename="../../source/PlayerDriver.cpp" />
+		<Unit filename="../../source/Projectile.cpp" />
 		<Unit filename="../../source/Projectiles.cpp" />
+		<Unit filename="../../source/Shotgun.cpp" />
 		<Unit filename="../../source/Sprite.cpp" />
 		<Unit filename="../../source/TextureManager.cpp" />
+		<Unit filename="../../source/Weapon.cpp" />
 		<Unit filename="../../source/main.cpp" />
 		<Unit filename="../../source/pugixml/pugixml.cpp" />
 		<Unit filename="../../source/tmxloader/MapLoaderPrivate.cpp" />
