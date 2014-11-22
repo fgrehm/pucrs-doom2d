@@ -14,16 +14,26 @@
 #include "MenuState.h"
 #include "InputManager.h"
 
+#include "Player.h"
+#include "PlayerDriver.h"
+
 PlayState PlayState::m_PlayState;
 
 using namespace std;
 
 void PlayState::init()
 {
-    player.loadXML("data/img/hunter.xml");
-    player.setPosition(50,100);
-    player.loadAnimation("data/img/hunteranim.xml");
-    player.setAnimRate(15);
+
+    im = cgf::InputManager::instance();
+
+    im->addKeyInput("left", sf::Keyboard::Left);
+    im->addKeyInput("right", sf::Keyboard::Right);
+    im->addKeyInput("up", sf::Keyboard::Up);
+    im->addKeyInput("down", sf::Keyboard::Down);
+    im->addKeyInput("quit", sf::Keyboard::Escape);
+    im->addKeyInput("zoomin", sf::Keyboard::Z);
+    im->addKeyInput("zoomout", sf::Keyboard::X);
+    im->addMouseInput("rightclick", sf::Mouse::Right);
 
     //bullet.load("data/img/Char27.png");
     //bullet.setXspeed(100);
@@ -39,16 +49,9 @@ void PlayState::init()
     dirx = 0; // direção do sprite: para a direita (1), esquerda (-1)
     diry = 0;
 
-    im = cgf::InputManager::instance();
-
-    im->addKeyInput("left", sf::Keyboard::Left);
-    im->addKeyInput("right", sf::Keyboard::Right);
-    im->addKeyInput("up", sf::Keyboard::Up);
-    im->addKeyInput("down", sf::Keyboard::Down);
-    im->addKeyInput("quit", sf::Keyboard::Escape);
-    im->addKeyInput("zoomin", sf::Keyboard::Z);
-    im->addKeyInput("zoomout", sf::Keyboard::X);
-    im->addMouseInput("rightclick", sf::Mouse::Right);
+    projectiles = new Projectiles();
+    player = new Player(projectiles);
+    playerdriver = new PlayerDriver(*player, im);
 
     if (!font.loadFromFile("data/fonts/arial.ttf"))
     {
@@ -72,6 +75,8 @@ void PlayState::cleanup()
 {
 	cout << "PlayState Clean Successful" << endl;
 	delete map;
+	delete playerdriver;
+	delete projectiles;
 }
 
 void PlayState::pause()
@@ -88,7 +93,6 @@ void PlayState::handleEvents(cgf::Game* game)
 {
     sf::Event event;
     sf::View view = screen->getView();
-    bool performShoot = false;
 
     while (screen->pollEvent(event)){
 
@@ -96,55 +100,10 @@ void PlayState::handleEvents(cgf::Game* game)
             game->quit();
         }
 
-        if(event.type == sf::Event::KeyPressed){
-
-            if(event.key.code == sf::Keyboard::S){
-                game->toggleStats();
-            } else if (event.key.code == sf::Keyboard::LControl){
-                performShoot = true; // Keep track if we want to shoot
-            }
-
+        if(event.key.code == sf::Keyboard::S){
+            game->toggleStats();
         }
-    }
-
-    dirx = diry = 0;
-
-    if(im->testEvent("left")) {
-        if(player.getXspeed() >= 0) {
-            player.setAnimation("walk-left");
-            player.play();
-        }
-        dirx = -1;
-    }
-    else
-    if(im->testEvent("right")) {
-        if(player.getXspeed() <= 0) {
-            player.setAnimation("walk-right");
-            player.play();
-        }
-        dirx = 1;
-    }
-
-    if(im->testEvent("up")) {
-        if(player.getYspeed() >= 0) {
-            player.setAnimation("walk-up");
-            player.play();
-        }
-        diry = -1;
-    }
-
-    if(im->testEvent("down")) {
-        if(player.getYspeed() <= 0) {
-            player.setAnimation("walk-down");
-            player.play();
-        }
-        diry = 1;
-    }
-
-    if(!dirx && !diry) // parado?
-    {
-        player.setCurrentFrame(0);
-        player.pause();
+        playerdriver->receiveInput(event);
     }
 
     if(im->testEvent("quit") || im->testEvent("rightclick"))
@@ -161,37 +120,13 @@ void PlayState::handleEvents(cgf::Game* game)
         screen->setView(view);
     }
 
-    player.setXspeed(dirx*100);
-    player.setYspeed(diry*100);
-
-    if (performShoot)
-        shoot(game);
-}
-
-void PlayState::shoot(cgf::Game* game)
-{
-    if (ammo == 0) {
-        cout << "Out of ammo" << endl;
-    } else {
-        ammo--;
-        cgf::Sprite newBullet;
-        newBullet.load("data/img/Char27.png");
-        newBullet.scale(0.5, 0.5);
-        newBullet.setPosition(player.getPosition());
-        newBullet.setXspeed(dirx * 150);
-        newBullet.setYspeed(diry * 150);
-        if (dirx == 0 && diry == 0)
-            newBullet.setYspeed(100);
-        bullets.push_back(newBullet);
-        cout << "SHOOT!" << endl;
-    }
 }
 
 void PlayState::update(cgf::Game* game)
 {
     screen = game->getScreen();
-    checkCollision(2, game, &player);
-    centerMapOnPlayer();
+    checkCollision(2, game, player->getSprite());
+    //centerMapOnPlayer();
     /*if (checkCollision(2, game, &bullet)) {
         bullet.setXspeed(bullet.getXspeed() * -1);
         bullet.setMirror(!bullet.getMirror());
@@ -393,6 +328,7 @@ sf::Uint16 PlayState::getCellFromMap(uint8_t layernum, float x, float y)
     return layer.tiles[row*mapsize.x + col].gid;
 }
 
+#if 0
 void PlayState::centerMapOnPlayer()
 {
     sf::View view = screen->getView();
@@ -419,6 +355,7 @@ void PlayState::centerMapOnPlayer()
     view.setCenter(sf::Vector2f(panX,panY));
     screen->setView(view);
 }
+#endif
 
 void PlayState::draw(cgf::Game* game)
 {
@@ -427,7 +364,7 @@ void PlayState::draw(cgf::Game* game)
     screen->clear(sf::Color(0,0,0));
 
     map->Draw(*screen, 0);
-    screen->draw(player);
+    player->draw(game);
     //screen->draw(bullet);
 
     for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {

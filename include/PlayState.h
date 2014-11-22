@@ -10,15 +10,18 @@
 #ifndef PLAY_STATE_H_
 #define PLAY_STATE_H_
 
+#include "PlayerDriver.h"
 #include "GameState.h"
 #include "Sprite.h"
 #include "InputManager.h"
+#include "Projectiles.h"
+
 #include <MapLoader.h>
 #include <vector>
 
 class PlayState : public cgf::GameState
 {
-    public:
+public:
 
     void init();
     void cleanup();
@@ -36,11 +39,15 @@ class PlayState : public cgf::GameState
         return &m_PlayState;
     }
 
-    protected:
+protected:
 
     PlayState() {}
 
-    private:
+private:
+
+    PlayerDriver *playerdriver;
+    Player *player;
+    Projectiles *projectiles;
 
     static PlayState m_PlayState;
 
@@ -57,7 +64,6 @@ class PlayState : public cgf::GameState
     int dirx, diry;
     int ammo;
     std::vector<cgf::Sprite> bullets;
-    cgf::Sprite player;
     cgf::Sprite bullet;
     sf::RenderWindow* screen;
     cgf::InputManager* im;

@@ -87,9 +87,14 @@
 		<Unit filename="../../include/Game.h" />
 		<Unit filename="../../include/GameState.h" />
 		<Unit filename="../../include/InputManager.h" />
+		<Unit filename="../../include/InvItem.h" />
+		<Unit filename="../../include/Inventory.h" />
 		<Unit filename="../../include/MenuState.h" />
 		<Unit filename="../../include/PlayState.h" />
 		<Unit filename="../../include/Player.h" />
+		<Unit filename="../../include/PlayerDriver.h" />
+		<Unit filename="../../include/Projectile.h" />
+		<Unit filename="../../include/Projectiles.h" />
 		<Unit filename="../../include/Sprite.h" />
 		<Unit filename="../../include/TextureManager.h" />
 		<Unit filename="../../include/pugixml/pugiconfig.hpp" />
@@ -102,9 +107,12 @@
 		<Unit filename="../../include/tmxloader/zlib.h" />
 		<Unit filename="../../source/Game.cpp" />
 		<Unit filename="../../source/InputManager.cpp" />
+		<Unit filename="../../source/Inventory.cpp" />
 		<Unit filename="../../source/MenuState.cpp" />
 		<Unit filename="../../source/PlayState.cpp" />
 		<Unit filename="../../source/Player.cpp" />
+		<Unit filename="../../source/PlayerDriver.cpp" />
+		<Unit filename="../../source/Projectiles.cpp" />
 		<Unit filename="../../source/Sprite.cpp" />
 		<Unit filename="../../source/TextureManager.cpp" />
 		<Unit filename="../../source/main.cpp" />

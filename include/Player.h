@@ -2,22 +2,40 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 
+#include "D2dedir.h"
+
+#include "Game.h"
+#include "Sprite.h"
+
+#include "Projectiles.h"
+#include "Inventory.h"
+
 class Player {
 
 public:
 
-    Player(); // mvtodo: get a pointer to the world obj? monster col? projectiles manager?
+    Player(Projectiles *projs);
     ~Player();
+
+    void setPosition(float x, float y);
+    cgf::Sprite *getSprite();
+    void draw(cgf::Game* gm);
 
     void impulseLeft();
     void impulseUp();
     void impulseRight();
     void impulseDown();
+    void impulseHalt();
 
-    // mvtodo: inventory
-    // mvtodo: currently selected weapon
+    void impulseShoot();
+
+    Inventory inventory;
 
 private:
+
+    int pdir;
+    Projectiles *projectiles;
+    cgf::Sprite *psprite;
 
 };
 
