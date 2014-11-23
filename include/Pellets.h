@@ -21,8 +21,6 @@ private:
     int y;
     int dir;
 
-    cgf::Sprite *pelsprite;
-
 };
 
 #endif // _H_PELLETS_H_

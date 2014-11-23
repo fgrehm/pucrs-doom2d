@@ -44,9 +44,6 @@ void PlayState::init()
     //map->Load("dungeon-tilesets2.tmx");
     map->Load("level1.tmx");
 
-    dirx = 0; // direção do sprite: para a direita (1), esquerda (-1)
-    diry = 0;
-
     projectiles = new Projectiles();
     player = new Player(projectiles);
     playerdriver = new PlayerDriver(*player, im);
@@ -63,8 +60,6 @@ void PlayState::init()
     //text.setCharacterSize(24); // in pixels, not points!
     //text.setColor(sf::Color::Red);
     //text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-
-    ammo = 30;
 
 	cout << "PlayState Init Successful" << endl;
 }
@@ -125,6 +120,20 @@ void PlayState::update(cgf::Game* game)
     screen = game->getScreen();
     checkCollision(2, game, player->getSprite());
     centerMapOnPlayer();
+
+    // check projectile colisions. those that collide, we mark for posterior deletion
+    std::vector<int> col_projs;
+    for (int i=0; i<projectiles->projectiles.size(); ++i){
+
+        cgf::Sprite *prjspr = projectiles->projectiles[i]->sprite;
+        if (checkCollision(2, game, prjspr)){
+            col_projs.push_back(i);
+        }
+
+    }
+    for (int i=0; i<col_projs.size(); ++i){
+        projectiles->kill(col_projs[i]);
+    }
 
     /*if (checkCollision(2, game, &bullet)) {
         bullet.setXspeed(bullet.getXspeed() * -1);

@@ -8,6 +8,8 @@
 
 class Projectiles {
 
+friend class PlayState;
+
 public:
 
     Projectiles();
@@ -17,6 +19,8 @@ public:
     void draw(cgf::Game* game);
 
     void spawnNew(Projectile *proj);
+
+    void kill(const int);
 
 private:
 

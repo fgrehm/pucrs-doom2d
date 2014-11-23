@@ -24,3 +24,7 @@ void Projectiles::draw(cgf::Game* game){
 void Projectiles::spawnNew(Projectile *proj){
     projectiles.push_back(proj);
 }
+
+void Projectiles::kill(const int index){
+    projectiles.erase(projectiles.begin()+ index);
+}

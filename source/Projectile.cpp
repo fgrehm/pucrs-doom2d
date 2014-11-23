@@ -1,6 +1,11 @@
 
 #include "Projectile.h"
 
+Projectile::Projectile():
+sprite(0)
+{
+}
+
 int Projectile::getXMultFromDir(int dir){
 
     switch (dir){

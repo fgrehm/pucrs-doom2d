@@ -4,30 +4,29 @@
 Pellets::Pellets(int _x, int _y, int _dir):
 x(_x),
 y(_y),
-dir(_dir),
-pelsprite(0)
+dir(_dir)
 {
 
-    pelsprite = new cgf::Sprite();
-    pelsprite->load("data/img/pellets.png");
-    pelsprite->scale(0.5, 0.5);
+    sprite = new cgf::Sprite();
+    sprite->load("data/img/pellets.png");
+    sprite->scale(0.5, 0.5);
     sf::Vector2f vpos = sf::Vector2f();
     vpos.x = x;
     vpos.y = y;
-    pelsprite->setPosition(vpos);
+    sprite->setPosition(vpos);
     int dirx = getXMultFromDir(dir);
     int diry = getYMultFromDir(dir);
-    pelsprite->setXspeed(dirx * 150);
-    pelsprite->setYspeed(diry * 150);
+    sprite->setXspeed(dirx * 500);
+    sprite->setYspeed(diry * 500);
 
 }
 
 Pellets::~Pellets(){
-    if (pelsprite){
-        delete pelsprite;
+    if (sprite){
+        delete sprite;
     }
 }
 
 void Pellets::draw(cgf::Game* game){
-    game->getScreen()->draw(*pelsprite);
+    game->getScreen()->draw(*sprite);
 }
