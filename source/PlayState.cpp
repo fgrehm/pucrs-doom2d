@@ -14,6 +14,7 @@
 #include "MenuState.h"
 #include "InputManager.h"
 
+#include "Imp.h"
 #include "Player.h"
 #include "PlayerDriver.h"
 
@@ -35,11 +36,6 @@ void PlayState::init()
     im->addKeyInput("zoomout", sf::Keyboard::X);
     im->addMouseInput("rightclick", sf::Mouse::Right);
 
-    //bullet.load("data/img/Char27.png");
-    //bullet.setXspeed(100);
-    //bullet.setMirror(true);
-    //bullet.setPosition(100, 100);
-
     map = new tmx::MapLoader("data/maps");
     //map->Load("dungeon-tilesets2.tmx");
     map->Load("level1.tmx");
@@ -47,6 +43,9 @@ void PlayState::init()
     projectiles = new Projectiles();
     player = new Player(projectiles);
     playerdriver = new PlayerDriver(*player, im);
+    monsters = new Monsters(player);
+
+    monsters->spawnNew(new Imp(80, 90, 3));
 
     if (!font.loadFromFile("data/fonts/arial.ttf"))
     {
@@ -70,6 +69,7 @@ void PlayState::cleanup()
 	delete map;
 	delete playerdriver;
 	delete projectiles;
+	delete monsters;
 }
 
 void PlayState::pause()
@@ -121,38 +121,49 @@ void PlayState::update(cgf::Game* game)
     checkCollision(2, game, player->getSprite());
     centerMapOnPlayer();
 
-    // check projectile colisions. those that collide, we mark for posterior deletion
-    std::vector<int> col_projs;
-    for (int i=0; i<projectiles->projectiles.size(); ++i){
+    // check projectile collisions.
+    bool repeat_dreaded_bubble_sort = true;
+    while (repeat_dreaded_bubble_sort){
+        repeat_dreaded_bubble_sort = false;
 
-        cgf::Sprite *prjspr = projectiles->projectiles[i]->sprite;
-        if (checkCollision(2, game, prjspr)){
-            col_projs.push_back(i);
+        for (int i=0; i<projectiles->projectiles.size(); ++i){
+
+            cgf::Sprite *prjspr = projectiles->projectiles[i]->sprite;
+
+            // check against the map
+            if (checkCollision(2, game, prjspr)){
+                projectiles->kill(i);
+                repeat_dreaded_bubble_sort = true;
+                break;
+            }
+
+            // check against the player
+            if (prjspr->circleCollision(*(player->getSprite()))) {
+                killPlayer();
+            }
+
+            // check against monsters
+            bool i_wanna_cry = false;
+            for (int j=0; j<monsters->monsters.size(); ++i){
+                cgf::Sprite *monspr = monsters->monsters[i]->sprite;
+                if (prjspr->circleCollision(*monspr)){
+                    projectiles->kill(i);
+                    monsters->kill(j);
+                    i_wanna_cry = true;
+                    break;
+                }
+            }
+            if (i_wanna_cry){
+                repeat_dreaded_bubble_sort = true;
+                break;
+            }
         }
-
-    }
-    for (int i=0; i<col_projs.size(); ++i){
-        projectiles->kill(col_projs[i]);
     }
 
-    /*if (checkCollision(2, game, &bullet)) {
-        bullet.setXspeed(bullet.getXspeed() * -1);
-        bullet.setMirror(!bullet.getMirror());
-    } else if (bullet.circleCollision(player)) {
-        game->changeState(MenuState::instance());
-    }*/
-
-    /*for(std::vector<int>::size_type i = 0; i != bullets.size(); i++) {
-        if (checkCollision(2, game, &bullets[i])) {
-            cout << "Bullet " << i << " collided" << endl;
-            // Remove bullet from list and adjust counter
-            bullets.erase(bullets.begin() + i);
-            i--;
-        } else {
-            bullets[i].update(game->getUpdateInterval(), true);
-            screen->draw(bullets[i]);
-        }
-    }*/
+    // let monsters think
+    for (int i=0; i<monsters->monsters.size(); ++i){
+        monsters->monsters[i]->think();
+    }
 
 }
 
@@ -374,6 +385,10 @@ void PlayState::draw(cgf::Game* game)
     player->draw(game);
     projectiles->draw(game);
     map->Draw(*screen, 1);
+    monsters->draw(game);
 
     //screen->draw(text);
+}
+
+void PlayState::killPlayer(){
 }

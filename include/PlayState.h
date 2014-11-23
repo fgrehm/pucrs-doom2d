@@ -14,6 +14,7 @@
 #include "GameState.h"
 #include "Sprite.h"
 #include "InputManager.h"
+#include "Monsters.h"
 #include "Projectiles.h"
 
 #include <MapLoader.h>
@@ -48,6 +49,7 @@ private:
     PlayerDriver *playerdriver;
     Player *player;
     Projectiles *projectiles;
+    Monsters *monsters;
 
     static PlayState m_PlayState;
 
@@ -58,6 +60,8 @@ private:
     void centerMapOnPlayer();
 
     bool checkCollision(u_int8_t layer, cgf::Game* game, cgf::Sprite* obj);
+
+    void killPlayer();
 
     sf::RenderWindow* screen;
     cgf::InputManager* im;
