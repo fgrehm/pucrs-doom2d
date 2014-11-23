@@ -87,10 +87,13 @@
 		<Unit filename="../../include/FrameClock.h" />
 		<Unit filename="../../include/Game.h" />
 		<Unit filename="../../include/GameState.h" />
+		<Unit filename="../../include/Imp.h" />
 		<Unit filename="../../include/InputManager.h" />
 		<Unit filename="../../include/InvItem.h" />
 		<Unit filename="../../include/Inventory.h" />
 		<Unit filename="../../include/MenuState.h" />
+		<Unit filename="../../include/Monster.h" />
+		<Unit filename="../../include/Monsters.h" />
 		<Unit filename="../../include/Pellets.h" />
 		<Unit filename="../../include/PlayState.h" />
 		<Unit filename="../../include/Player.h" />
@@ -110,9 +113,12 @@
 		<Unit filename="../../include/tmxloader/zconf.h" />
 		<Unit filename="../../include/tmxloader/zlib.h" />
 		<Unit filename="../../source/Game.cpp" />
+		<Unit filename="../../source/Imp.cpp" />
 		<Unit filename="../../source/InputManager.cpp" />
 		<Unit filename="../../source/Inventory.cpp" />
 		<Unit filename="../../source/MenuState.cpp" />
+		<Unit filename="../../source/Monster.cpp" />
+		<Unit filename="../../source/Monsters.cpp" />
 		<Unit filename="../../source/Pellets.cpp" />
 		<Unit filename="../../source/PlayState.cpp" />
 		<Unit filename="../../source/Player.cpp" />
