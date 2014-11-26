@@ -144,8 +144,9 @@ void PlayState::update(cgf::Game* game)
 
             // check against monsters
             bool i_wanna_cry = false;
-            for (int j=0; j<monsters->monsters.size(); ++i){
-                cgf::Sprite *monspr = monsters->monsters[i]->sprite;
+            for (int j=0; j<monsters->monsters.size(); ++j){
+                cgf::Sprite *monspr = monsters->monsters[j]->sprite;
+
                 if (prjspr->circleCollision(*monspr)){
                     projectiles->kill(i);
                     monsters->kill(j);
