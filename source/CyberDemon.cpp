@@ -30,3 +30,9 @@ void CyberDemon::draw(cgf::Game* game){
 void CyberDemon::think(){
 
 }
+
+void CyberDemon::kill(){
+    alive=false;
+    sprite->load("data/img/cyberdemon_dead.png");
+    sprite->scale(1.3, 1.3);
+}

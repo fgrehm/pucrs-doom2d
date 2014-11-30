@@ -30,3 +30,9 @@ void BaronOfHell::draw(cgf::Game* game){
 void BaronOfHell::think(){
 
 }
+
+void BaronOfHell::kill(){
+    alive=false;
+    sprite->load("data/img/baronofhell_dead.png");
+    sprite->scale(1.3, 1.3);
+}

@@ -30,3 +30,9 @@ void Imp::draw(cgf::Game* game){
 void Imp::think(){
 
 }
+
+void Imp::kill(){
+    alive=false;
+    sprite->load("data/img/imp_dead.png");
+    sprite->scale(1.3, 1.3);
+}

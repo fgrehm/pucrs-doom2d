@@ -2,7 +2,8 @@
 #include "Monster.h"
 
 Monster::Monster():
-sprite(0)
+sprite(0),
+alive(true)
 {
 }
 
@@ -74,4 +75,8 @@ int Monster::getYMultFromDir(int dir){
 
     }
 
+}
+
+bool Monster::isAlive(){
+    return alive;
 }

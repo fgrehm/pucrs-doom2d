@@ -16,6 +16,7 @@ public:
 
     virtual void draw(cgf::Game* game);
     virtual void think();
+    virtual void kill();
 
 private:
 

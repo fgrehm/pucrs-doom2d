@@ -15,6 +15,9 @@
 #include "InputManager.h"
 
 #include "ItemShells.h"
+#include "ItemShotgun.h"
+#include "ItemRocketLauncher.h"
+#include "ItemRocket.h"
 
 #include "Player.h"
 #include "PlayerDriver.h"
@@ -37,6 +40,9 @@ void PlayState::init()
     im->addKeyInput("right", sf::Keyboard::Right);
     im->addKeyInput("up", sf::Keyboard::Up);
     im->addKeyInput("down", sf::Keyboard::Down);
+    im->addKeyInput("one", sf::Keyboard::Num1);
+    im->addKeyInput("two", sf::Keyboard::Num2);
+    im->addKeyInput("three", sf::Keyboard::Num3);
     im->addKeyInput("quit", sf::Keyboard::Escape);
     im->addKeyInput("zoomin", sf::Keyboard::Z);
     im->addKeyInput("zoomout", sf::Keyboard::X);
@@ -70,6 +76,7 @@ void PlayState::init()
     monsters->spawnNew(new PinkDemon(500, 360, 3));
     monsters->spawnNew(new PinkDemon(300, 310, 3));
     monsters->spawnNew(new PinkDemon(360, 240, 3));
+    monsters->spawnNew(new PinkDemon(950, 650, 3));
     monsters->spawnNew(new BaronOfHell(1000, 270, 3));
     monsters->spawnNew(new BaronOfHell(1200, 380, 3));
 
@@ -80,7 +87,15 @@ void PlayState::init()
 
     monsters->spawnNew(new CyberDemon(1250, 900, 3));
 
-    items->spawnNew(new ItemShells(80, 170));
+    items->spawnNew(new ItemShotgun(700, 420));
+    items->spawnNew(new ItemShells(740, 440));
+    items->spawnNew(new ItemShells(770, 480));
+    items->spawnNew(new ItemShells(670, 430));
+
+    items->spawnNew(new ItemRocketLauncher(700, 750));
+    items->spawnNew(new ItemRocket(90, 850));
+    items->spawnNew(new ItemRocket(120, 900));
+    items->spawnNew(new ItemRocket(170, 850));
     // END MANUALLY SET MAP ENTITIES
 
 	cout << "PlayState Init Successful" << endl;
@@ -169,6 +184,11 @@ void PlayState::update(cgf::Game* game)
             // check against monsters
             bool i_wanna_cry = false;
             for (int j=0; j<monsters->monsters.size(); ++j){
+
+                if (!(monsters->monsters[j]->isAlive())){
+                    continue;
+                }
+
                 cgf::Sprite *monspr = monsters->monsters[j]->sprite;
 
                 if (prjspr->circleCollision(*monspr)){

@@ -30,3 +30,9 @@ void PinkDemon::draw(cgf::Game* game){
 void PinkDemon::think(){
 
 }
+
+void PinkDemon::kill(){
+    alive=false;
+    sprite->load("data/img/pinkdemon_dead.png");
+    sprite->scale(1.3, 1.3);
+}

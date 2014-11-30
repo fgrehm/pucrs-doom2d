@@ -32,6 +32,18 @@ void PlayerDriver::receiveInput(const sf::Event &evt){
             theplayer.impulseDown();
         }
 
+        if (im->testEvent("one")){
+            theplayer.impulseSelectPistol();
+        }
+
+        if (im->testEvent("two")){
+            theplayer.impulseSelectShotgun();
+        }
+
+        if (im->testEvent("three")){
+            theplayer.impulseSelectRocketLauncher();
+        }
+
     } else if (evt.type == sf::Event::KeyReleased){
         if (evt.key.code == sf::Keyboard::Left || evt.key.code == sf::Keyboard::Right || evt.key.code == sf::Keyboard::Up || evt.key.code == sf::Keyboard::Down) {
             theplayer.impulseHalt();

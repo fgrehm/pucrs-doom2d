@@ -23,7 +23,8 @@ ItemRocketLauncher::~ItemRocketLauncher(){
 }
 
 void ItemRocketLauncher::visit(Inventory *iv) {
-    iv->refillShotgun(8);
+    iv->addRocketLauncher();
+    iv->refillRocketLauncher(2);
 }
 
 void ItemRocketLauncher::draw(cgf::Game* game){

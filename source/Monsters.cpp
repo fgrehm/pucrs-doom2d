@@ -29,5 +29,5 @@ void Monsters::spawnNew(Monster *proj){
 }
 
 void Monsters::kill(const int index){
-    monsters.erase(monsters.begin()+ index);
+    monsters[index]->kill();
 }

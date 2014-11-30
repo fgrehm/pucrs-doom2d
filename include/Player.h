@@ -29,24 +29,23 @@ public:
     void impulseDown();
     void impulseHalt();
 
+    void impulseSelectPistol();
+    void impulseSelectShotgun();
+    void impulseSelectRocketLauncher();
+
     void impulseShoot();
 
     const sf::Vector2f& getPosition();
 
     Inventory *getInventory();
 
-    Inventory inventory;
+    Inventory *inventory;
 
 private:
 
     int pdir;
     Projectiles *projectiles;
     cgf::Sprite *psprite;
-
-    cgf::Sprite *pdown;
-    cgf::Sprite *pleft;
-    cgf::Sprite *pup;
-    cgf::Sprite *pright;
 
 };
 
