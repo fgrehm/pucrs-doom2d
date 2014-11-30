@@ -1,19 +1,27 @@
 
-#ifndef _INVITEM_H_
-#define _INVITEM_H_
+#ifndef _ITEMSHOTGUN_H_
+#define _ITEMSHOTGUN_H_
 
 #include "Inventory.h"
+#include "InvItem.h"
 
 class Inventory;
 
-class InvItem {
+class ItemShotgun : public InvItem {
 
 public:
 
-    virtual void visit(Inventory *) = 0;
+    ItemShotgun(int _x, int _y);
+    ~ItemShotgun();
+
+    virtual void draw(cgf::Game* game);
+    virtual void visit(Inventory *);
 
 private:
 
+    int x;
+    int y;
+
 };
 
-#endif // _INVITEM_H_
+#endif // _ITEMSHOTGUN_H_

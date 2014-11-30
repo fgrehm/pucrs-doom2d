@@ -14,11 +14,15 @@
 #include "MenuState.h"
 #include "InputManager.h"
 
+#include "ItemShells.h"
+
 #include "Player.h"
 #include "PlayerDriver.h"
 
 #include "Imp.h"
-#include "ItemShells.h"
+#include "CyberDemon.h"
+#include "PinkDemon.h"
+#include "BaronOfHell.h"
 
 PlayState PlayState::m_PlayState;
 
@@ -62,7 +66,20 @@ void PlayState::init()
     //text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
     // BEGIN MANUALLY SET MAP ENTITIES
-    monsters->spawnNew(new Imp(80, 90, 3));
+    monsters->spawnNew(new Imp(150, 90, 3));
+    monsters->spawnNew(new PinkDemon(500, 360, 3));
+    monsters->spawnNew(new PinkDemon(300, 310, 3));
+    monsters->spawnNew(new PinkDemon(360, 240, 3));
+    monsters->spawnNew(new BaronOfHell(1000, 270, 3));
+    monsters->spawnNew(new BaronOfHell(1200, 380, 3));
+
+    monsters->spawnNew(new Imp(500, 630, 3));
+    monsters->spawnNew(new Imp(340, 630, 3));
+    monsters->spawnNew(new Imp(480, 760, 3));
+    monsters->spawnNew(new Imp(300, 775, 3));
+
+    monsters->spawnNew(new CyberDemon(1250, 900, 3));
+
     items->spawnNew(new ItemShells(80, 170));
     // END MANUALLY SET MAP ENTITIES
 

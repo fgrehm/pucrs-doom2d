@@ -1,19 +1,31 @@
 
-#ifndef _INVITEM_H_
-#define _INVITEM_H_
+#include "ItemShotgun.h"
 
-#include "Inventory.h"
+ItemShotgun::ItemShotgun(int _x, int _y):
+x(_x),
+y(_y)
+{
 
-class Inventory;
+    sprite = new cgf::Sprite();
+    sprite->load("data/img/shotgun.png");
+    sprite->scale(1.2, 1.2);
+    sf::Vector2f vpos = sf::Vector2f();
+    vpos.x = x;
+    vpos.y = y;
+    sprite->setPosition(vpos);
 
-class InvItem {
+}
 
-public:
+ItemShotgun::~ItemShotgun(){
+    if (sprite){
+        delete sprite;
+    }
+}
 
-    virtual void visit(Inventory *) = 0;
+void ItemShotgun::visit(Inventory *iv) {
+    iv->addShotgun();
+}
 
-private:
-
-};
-
-#endif // _INVITEM_H_
+void ItemShotgun::draw(cgf::Game* game){
+    game->getScreen()->draw(*sprite);
+}
