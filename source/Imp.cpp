@@ -9,7 +9,7 @@ dir(_dir)
 
     sprite = new cgf::Sprite();
     sprite->load("data/img/imp.png");
-    sprite->scale(0.5, 0.5);
+    sprite->scale(1.3, 1.3);
     sf::Vector2f vpos = sf::Vector2f();
     vpos.x = x;
     vpos.y = y;

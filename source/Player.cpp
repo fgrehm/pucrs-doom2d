@@ -2,6 +2,11 @@
 #include "Player.h"
 
 Player::Player(Projectiles *projs):
+psprite(0),
+pdown(0),
+pleft(0),
+pup(0),
+pright(0),
 projectiles(projs),
 inventory(projs),
 pdir(D2DEDIR_DOWN)
@@ -12,15 +17,14 @@ pdir(D2DEDIR_DOWN)
 
     psprite = new cgf::Sprite();
 
-    psprite->loadXML("data/img/hunter.xml");
+    psprite->load("data/img/hero_down.png");
     psprite->setPosition(50,100);
-    psprite->loadAnimation("data/img/hunteranim.xml");
-    psprite->setAnimRate(15);
 
 }
 
 Player::~Player(){
     delete psprite;
+    delete pdown;
 }
 
 void Player::setPosition(float x, float y){
@@ -32,28 +36,28 @@ cgf::Sprite *Player::getSprite(){
 }
 
 void Player::impulseLeft(){
-    psprite->setAnimation("walk-left");
+    psprite->load("data/img/hero_left.png");
     psprite->play();
     psprite->setXspeed(-100);
     pdir =  D2DEDIR_LEFT;
 }
 
 void Player::impulseUp(){
-    psprite->setAnimation("walk-up");
+    psprite->load("data/img/hero_up.png");
     psprite->play();
     psprite->setYspeed(-100);
     pdir = D2DEDIR_UP;
 }
 
 void Player::impulseRight(){
-    psprite->setAnimation("walk-right");
+    psprite->load("data/img/hero_right.png");
     psprite->play();
     psprite->setXspeed(100);
     pdir = D2DEDIR_RIGHT;
 }
 
 void Player::impulseDown(){
-    psprite->setAnimation("walk-down");
+    psprite->load("data/img/hero_down.png");
     psprite->play();
     psprite->setYspeed(100);
     pdir = D2DEDIR_DOWN;

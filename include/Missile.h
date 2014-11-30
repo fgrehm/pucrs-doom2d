@@ -2,6 +2,8 @@
 #ifndef _H_MISSILE_H_
 #define _H_MISSILE_H_
 
+#include "D2dedir.h"
+
 #include "Game.h"
 #include "Sprite.h"
 #include "Projectile.h"
@@ -20,6 +22,8 @@ private:
     int x;
     int y;
     int dir;
+
+    const char *getNameByDir() const;
 
 };
 

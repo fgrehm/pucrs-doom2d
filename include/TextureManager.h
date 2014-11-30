@@ -29,7 +29,7 @@ class TextureManager
     public:
 
         virtual ~TextureManager();
-        sf::Texture* findTexture(char* nomeArq);
+        sf::Texture* findTexture(const char* nomeArq);
         void setDefaultImageDir(char* dir);
         void releaseTexture(char* nomeArq);
         static TextureManager * getInstance ()

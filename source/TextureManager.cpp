@@ -35,7 +35,7 @@ TextureManager::~TextureManager()
     }
 }
 
-sf::Texture* TextureManager::findTexture(char* nomeArq)
+sf::Texture* TextureManager::findTexture(const char* nomeArq)
 {
     if(imgs.find(nomeArq) == imgs.end()) {
         cout << "New texture: " << nomeArq;

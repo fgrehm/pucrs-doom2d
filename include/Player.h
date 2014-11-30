@@ -43,6 +43,11 @@ private:
     Projectiles *projectiles;
     cgf::Sprite *psprite;
 
+    cgf::Sprite *pdown;
+    cgf::Sprite *pleft;
+    cgf::Sprite *pup;
+    cgf::Sprite *pright;
+
 };
 
 #endif // _PLAYER_H_

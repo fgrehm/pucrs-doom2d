@@ -32,7 +32,7 @@ public:
     Sprite();
     virtual ~Sprite();
 
-    bool load(char filename[]);
+    bool load(const char filename[]);
     bool load(char filename[], int w, int h, int hSpace, int vSpace, int xIni, int yIni,
                 int column, int row, int total);
     bool loadXML(char filename[]);

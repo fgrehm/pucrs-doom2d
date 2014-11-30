@@ -38,7 +38,7 @@ Sprite::Sprite()
     currentAnim = NULL;
 }
 
-bool Sprite::load(char filename[])
+bool Sprite::load(const char filename[])
 {
     tex = tm->findTexture(filename);
     if(tex == NULL)
