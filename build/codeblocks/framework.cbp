@@ -82,8 +82,10 @@
 			<Add library="sfml-system" />
 			<Add library="z" />
 		</Linker>
+		<Unit filename="../../include/BaronOfHell.h" />
 		<Unit filename="../../include/Bullet.h" />
 		<Unit filename="../../include/ClockHUD.h" />
+		<Unit filename="../../include/CyberDemon.h" />
 		<Unit filename="../../include/D2dedir.h" />
 		<Unit filename="../../include/FrameClock.h" />
 		<Unit filename="../../include/Game.h" />
@@ -95,12 +97,14 @@
 		<Unit filename="../../include/ItemRocket.h" />
 		<Unit filename="../../include/ItemRocketLauncher.h" />
 		<Unit filename="../../include/ItemShells.h" />
+		<Unit filename="../../include/ItemShotgun.h" />
 		<Unit filename="../../include/Items.h" />
 		<Unit filename="../../include/MenuState.h" />
 		<Unit filename="../../include/Missile.h" />
 		<Unit filename="../../include/Monster.h" />
 		<Unit filename="../../include/Monsters.h" />
 		<Unit filename="../../include/Pellets.h" />
+		<Unit filename="../../include/PinkDemon.h" />
 		<Unit filename="../../include/Pistol.h" />
 		<Unit filename="../../include/PlayState.h" />
 		<Unit filename="../../include/Player.h" />
@@ -120,7 +124,9 @@
 		<Unit filename="../../include/tmxloader/QuadTreeNode.h" />
 		<Unit filename="../../include/tmxloader/zconf.h" />
 		<Unit filename="../../include/tmxloader/zlib.h" />
+		<Unit filename="../../source/BaronOfHell.cpp" />
 		<Unit filename="../../source/Bullet.cpp" />
+		<Unit filename="../../source/CyberDemon.cpp" />
 		<Unit filename="../../source/Game.cpp" />
 		<Unit filename="../../source/Imp.cpp" />
 		<Unit filename="../../source/InputManager.cpp" />
@@ -129,12 +135,14 @@
 		<Unit filename="../../source/ItemRocket.cpp" />
 		<Unit filename="../../source/ItemRocketLauncher.cpp" />
 		<Unit filename="../../source/ItemShells.cpp" />
+		<Unit filename="../../source/ItemShotgun.cpp" />
 		<Unit filename="../../source/Items.cpp" />
 		<Unit filename="../../source/MenuState.cpp" />
 		<Unit filename="../../source/Missile.cpp" />
 		<Unit filename="../../source/Monster.cpp" />
 		<Unit filename="../../source/Monsters.cpp" />
 		<Unit filename="../../source/Pellets.cpp" />
+		<Unit filename="../../source/PinkDemon.cpp" />
 		<Unit filename="../../source/Pistol.cpp" />
 		<Unit filename="../../source/PlayState.cpp" />
 		<Unit filename="../../source/Player.cpp" />
