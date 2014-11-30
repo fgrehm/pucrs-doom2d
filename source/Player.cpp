@@ -1,7 +1,7 @@
 
 #include "Player.h"
 
-#define PSPEED 300
+#define PSPEED 200
 
 Player::Player(Projectiles *projs):
 psprite(0),
