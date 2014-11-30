@@ -7,8 +7,8 @@ inventory(projs),
 pdir(D2DEDIR_DOWN)
 {
 
-    inventory.addShotgun();
-    inventory.selectShotgun();
+    inventory.addPistol();
+    inventory.selectPistol();
 
     psprite = new cgf::Sprite();
 
@@ -78,4 +78,8 @@ void Player::draw(cgf::Game* game){
 
 const sf::Vector2f& Player::getPosition(){
     return psprite->getPosition();
+}
+
+Inventory * Player::getInventory(){
+    return &(this->inventory);
 }

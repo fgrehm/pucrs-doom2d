@@ -16,6 +16,7 @@
 #include "InputManager.h"
 #include "Monsters.h"
 #include "Projectiles.h"
+#include "Items.h"
 
 #include <MapLoader.h>
 #include <vector>
@@ -50,6 +51,7 @@ private:
     Player *player;
     Projectiles *projectiles;
     Monsters *monsters;
+    Items *items;
 
     static PlayState m_PlayState;
 

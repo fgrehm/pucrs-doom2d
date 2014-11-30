@@ -1,32 +1,32 @@
 
-#include "Pellets.h"
+#include "Bullet.h"
 
-Pellets::Pellets(int _x, int _y, int _dir):
+Bullet::Bullet(int _x, int _y, int _dir):
 x(_x),
 y(_y),
 dir(_dir)
 {
 
     sprite = new cgf::Sprite();
-    sprite->load("data/img/pellets.png");
-    sprite->scale(1.2, 1.2);
+    sprite->load("data/img/bullet.png");
+    sprite->scale(0.7, 0.7);
     sf::Vector2f vpos = sf::Vector2f();
     vpos.x = x;
     vpos.y = y;
     sprite->setPosition(vpos);
     int dirx = getXMultFromDir(dir);
     int diry = getYMultFromDir(dir);
-    sprite->setXspeed(dirx * 500);
-    sprite->setYspeed(diry * 500);
+    sprite->setXspeed(dirx * 350);
+    sprite->setYspeed(diry * 350);
 
 }
 
-Pellets::~Pellets(){
+Bullet::~Bullet(){
     if (sprite){
         delete sprite;
     }
 }
 
-void Pellets::draw(cgf::Game* game){
+void Bullet::draw(cgf::Game* game){
     game->getScreen()->draw(*sprite);
 }

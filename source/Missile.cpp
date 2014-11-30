@@ -1,14 +1,14 @@
 
-#include "Pellets.h"
+#include "Missile.h"
 
-Pellets::Pellets(int _x, int _y, int _dir):
+Missile::Missile(int _x, int _y, int _dir):
 x(_x),
 y(_y),
 dir(_dir)
 {
 
     sprite = new cgf::Sprite();
-    sprite->load("data/img/pellets.png");
+    sprite->load("data/img/missile.png");
     sprite->scale(1.2, 1.2);
     sf::Vector2f vpos = sf::Vector2f();
     vpos.x = x;
@@ -16,17 +16,17 @@ dir(_dir)
     sprite->setPosition(vpos);
     int dirx = getXMultFromDir(dir);
     int diry = getYMultFromDir(dir);
-    sprite->setXspeed(dirx * 500);
-    sprite->setYspeed(diry * 500);
+    sprite->setXspeed(dirx * 230);
+    sprite->setYspeed(diry * 230);
 
 }
 
-Pellets::~Pellets(){
+Missile::~Missile(){
     if (sprite){
         delete sprite;
     }
 }
 
-void Pellets::draw(cgf::Game* game){
+void Missile::draw(cgf::Game* game){
     game->getScreen()->draw(*sprite);
 }

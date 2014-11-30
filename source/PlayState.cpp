@@ -14,9 +14,11 @@
 #include "MenuState.h"
 #include "InputManager.h"
 
-#include "Imp.h"
 #include "Player.h"
 #include "PlayerDriver.h"
+
+#include "Imp.h"
+#include "ItemShells.h"
 
 PlayState PlayState::m_PlayState;
 
@@ -44,8 +46,7 @@ void PlayState::init()
     player = new Player(projectiles);
     playerdriver = new PlayerDriver(*player, im);
     monsters = new Monsters(player);
-
-    monsters->spawnNew(new Imp(80, 90, 3));
+    items = new Items(player->getInventory());
 
     if (!font.loadFromFile("data/fonts/arial.ttf"))
     {
@@ -60,6 +61,11 @@ void PlayState::init()
     //text.setColor(sf::Color::Red);
     //text.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
+    // BEGIN MANUALLY SET MAP ENTITIES
+    monsters->spawnNew(new Imp(80, 90, 3));
+    items->spawnNew(new ItemShells(80, 170));
+    // END MANUALLY SET MAP ENTITIES
+
 	cout << "PlayState Init Successful" << endl;
 }
 
@@ -70,6 +76,7 @@ void PlayState::cleanup()
 	delete playerdriver;
 	delete projectiles;
 	delete monsters;
+	delete items;
 }
 
 void PlayState::pause()
@@ -160,6 +167,9 @@ void PlayState::update(cgf::Game* game)
             }
         }
     }
+
+    // check collisions between player and any items
+    items->checkCollisionsWithPlayer(player);
 
     // let monsters think
     for (int i=0; i<monsters->monsters.size(); ++i){
@@ -387,6 +397,7 @@ void PlayState::draw(cgf::Game* game)
     projectiles->draw(game);
     map->Draw(*screen, 1);
     monsters->draw(game);
+    items->draw(game);
 
     //screen->draw(text);
 }

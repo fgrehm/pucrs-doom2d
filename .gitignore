@@ -24,5 +24,20 @@ bin/framework2
 # Codeblock stuff
 build/codeblocks/framework.depend
 build/codeblocks/framework.layout
+
+# Doom RL stuff
 bin/data/img/menudoom.png
 bin/data/maps/basedoom.png
+bin/data/img/baronofhell.png
+bin/data/img/blast.png
+bin/data/img/buckshot.png
+bin/data/img/cyberdemon.png
+bin/data/img/explosion.png
+bin/data/img/hero.png
+bin/data/img/imp.png
+bin/data/img/missile.png
+bin/data/img/pinkdemon.png
+bin/data/img/rocket.png
+bin/data/img/rocketlauncher.png
+bin/data/img/shotgun.png
+

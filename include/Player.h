@@ -33,6 +33,8 @@ public:
 
     const sf::Vector2f& getPosition();
 
+    Inventory *getInventory();
+
     Inventory inventory;
 
 private:
