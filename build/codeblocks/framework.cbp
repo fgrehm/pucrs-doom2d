@@ -81,6 +81,7 @@
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
 			<Add library="z" />
+			<Add library="sfml-audio" />
 		</Linker>
 		<Unit filename="../../include/BaronOfHell.h" />
 		<Unit filename="../../include/Bullet.h" />
