@@ -69,8 +69,6 @@ private:
     sf::RenderWindow* screen;
     cgf::InputManager* im;
     tmx::MapLoader* map;
-    sf::Font font;
-    sf::Text text;
     sf::Music music;
 };
 

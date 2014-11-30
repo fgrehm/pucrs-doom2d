@@ -60,19 +60,6 @@ void PlayState::init()
 
     firstTime = true;
 
-    if (!font.loadFromFile("data/fonts/arial.ttf"))
-    {
-        cout << "Cannot load arial.ttf font!" << endl;
-        exit(1);
-    }
-
-    // select the font
-    //text.setFont(font);
-    //text.setString(L"Teste de texto gráfico");
-    //text.setCharacterSize(24); // in pixels, not points!
-    //text.setColor(sf::Color::Red);
-    //text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-
     // BEGIN MANUALLY SET MAP ENTITIES
     monsters->spawnNew(new Imp(150, 90, 3));
     monsters->spawnNew(new PinkDemon(500, 360, 3));
