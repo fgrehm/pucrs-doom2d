@@ -52,6 +52,7 @@ private:
     Projectiles *projectiles;
     Monsters *monsters;
     Items *items;
+    bool firstTime;
 
     static PlayState m_PlayState;
 
@@ -70,6 +71,7 @@ private:
     tmx::MapLoader* map;
     sf::Font font;
     sf::Text text;
+    sf::Music music;
 };
 
 #endif

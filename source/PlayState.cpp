@@ -58,6 +58,8 @@ void PlayState::init()
     monsters = new Monsters(player);
     items = new Items(player->getInventory());
 
+    firstTime = true;
+
     if (!font.loadFromFile("data/fonts/arial.ttf"))
     {
         cout << "Cannot load arial.ttf font!" << endl;
@@ -156,6 +158,15 @@ void PlayState::handleEvents(cgf::Game* game)
 
 void PlayState::update(cgf::Game* game)
 {
+    if(firstTime) {
+        // Background audio from http://www.looperman.com/loops/detail/77776
+        music.openFromFile("data/audio/background-loop.wav");
+        music.setVolume(30); // 30% do volume máximo
+        music.setLoop(true);  // modo de loop: repete continuamente.
+        music.play();
+        firstTime = false;
+    }
+
     screen = game->getScreen();
     checkCollision(2, game, player->getSprite());
     centerMapOnPlayer();
