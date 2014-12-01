@@ -417,11 +417,11 @@ void PlayState::draw(cgf::Game* game)
     screen->clear(sf::Color(0,0,0));
 
     map->Draw(*screen, 0);
-    player->draw(game);
     projectiles->draw(game);
     map->Draw(*screen, 1);
     monsters->draw(game);
     items->draw(game);
+    player->draw(game);
 
     //screen->draw(text);
 }
