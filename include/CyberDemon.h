@@ -11,19 +11,7 @@ class CyberDemon : public Monster {
 
 public:
 
-    CyberDemon(int _x, int _y, int _dir);
-    virtual ~CyberDemon();
-
-    virtual void draw(cgf::Game* game);
-    virtual void think();
-    virtual void kill();
-
-private:
-
-    int x;
-    int y;
-    int dir;
-
+    CyberDemon(int x, int y, int dir);
 };
 
 #endif // _CYBERDEMON_H_

@@ -11,18 +11,7 @@ class Imp : public Monster {
 
 public:
 
-    Imp(int _x, int _y, int _dir);
-    virtual ~Imp();
-
-    virtual void draw(cgf::Game* game);
-    virtual void think();
-    virtual void kill();
-
-private:
-
-    int x;
-    int y;
-    int dir;
+    Imp(int x, int y, int dir);
 
 };
 

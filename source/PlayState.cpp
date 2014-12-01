@@ -205,12 +205,6 @@ void PlayState::update(cgf::Game* game)
 
     // check collisions between player and any items
     items->checkCollisionsWithPlayer(player);
-
-    // let monsters think
-    for (int i=0; i<monsters->monsters.size(); ++i){
-        monsters->monsters[i]->think();
-    }
-
 }
 
 bool PlayState::checkCollision(u_int8_t layer, cgf::Game* game, cgf::Sprite* obj)

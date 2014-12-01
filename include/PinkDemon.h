@@ -11,19 +11,7 @@ class PinkDemon : public Monster {
 
 public:
 
-    PinkDemon(int _x, int _y, int _dir);
-    virtual ~PinkDemon();
-
-    virtual void draw(cgf::Game* game);
-    virtual void think();
-    virtual void kill();
-
-private:
-
-    int x;
-    int y;
-    int dir;
-
+    PinkDemon(int x, int y, int dir);
 };
 
 #endif // _PINKDEMON_H_

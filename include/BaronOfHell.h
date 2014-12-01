@@ -11,19 +11,7 @@ class BaronOfHell : public Monster {
 
 public:
 
-    BaronOfHell(int _x, int _y, int _dir);
-    virtual ~BaronOfHell();
-
-    virtual void draw(cgf::Game* game);
-    virtual void think();
-    virtual void kill();
-
-private:
-
-    int x;
-    int y;
-    int dir;
-
+    BaronOfHell(int x, int y, int dir);
 };
 
 #endif // _BARONOFHELL_H_

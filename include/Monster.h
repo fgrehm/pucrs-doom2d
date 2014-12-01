@@ -12,14 +12,12 @@ friend class PlayState;
 
 public:
 
-    Monster();
+    Monster(int x, int y, int dir, const char img[]);
     virtual ~Monster(){}
 
-    virtual void think() = 0;
-    virtual void kill() = 0;
+    void kill();
 
-    virtual void draw(cgf::Game* game) = 0;
-
+    void draw(cgf::Game* game);
     bool isAlive();
     void playKillSound();
 
@@ -28,6 +26,9 @@ protected:
     cgf::Sprite *sprite;
     int getXMultFromDir(int dir);
     int getYMultFromDir(int dir);
+    int x, y, z, dir;
+
+    const char* monsterImage;
 
     sf::SoundBuffer killSoundBuffer;
     sf::Sound killSound;
