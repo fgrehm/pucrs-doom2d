@@ -37,37 +37,31 @@ cgf::Sprite *Player::getSprite(){
 
 void Player::impulseLeft(){
     psprite->load("data/img/hero_left.png");
-    psprite->play();
     psprite->setXspeed(-PSPEED);
     pdir =  D2DEDIR_LEFT;
 }
 
 void Player::impulseUp(){
     psprite->load("data/img/hero_up.png");
-    psprite->play();
     psprite->setYspeed(-PSPEED);
     pdir = D2DEDIR_UP;
 }
 
 void Player::impulseRight(){
     psprite->load("data/img/hero_right.png");
-    psprite->play();
     psprite->setXspeed(PSPEED);
     pdir = D2DEDIR_RIGHT;
 }
 
 void Player::impulseDown(){
     psprite->load("data/img/hero_down.png");
-    psprite->play();
     psprite->setYspeed(PSPEED);
     pdir = D2DEDIR_DOWN;
 }
 
 void Player::impulseHalt(){
-    psprite->setCurrentFrame(0);
     psprite->setYspeed(0);
     psprite->setXspeed(0);
-    psprite->pause();
 }
 
 void Player::impulseShoot()
