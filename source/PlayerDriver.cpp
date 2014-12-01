@@ -1,4 +1,3 @@
-
 #include "PlayerDriver.h"
 
 PlayerDriver::PlayerDriver(const Player &p, cgf::InputManager* _im):theplayer(p), im(_im){

@@ -148,8 +148,8 @@ void PlayState::update(cgf::Game* game)
     if(firstTime) {
         // Background audio from http://www.looperman.com/loops/detail/77776
         music.openFromFile("data/audio/background-loop.wav");
-        music.setVolume(30); // 30% do volume máximo
-        music.setLoop(true);  // modo de loop: repete continuamente.
+        music.setVolume(30);
+        music.setLoop(true);
         music.play();
         firstTime = false;
     }
