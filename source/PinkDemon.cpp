@@ -35,4 +35,5 @@ void PinkDemon::kill(){
     alive=false;
     sprite->load("data/img/pinkdemon_dead.png");
     sprite->scale(1.3, 1.3);
+    playKillSound();
 }

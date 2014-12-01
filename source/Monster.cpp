@@ -5,6 +5,9 @@ Monster::Monster():
 sprite(0),
 alive(true)
 {
+    killSoundBuffer.loadFromFile("data/audio/kill.wav");
+    killSound.setBuffer(killSoundBuffer);
+    killSound.setAttenuation(0);
 }
 
 int Monster::getXMultFromDir(int dir){
@@ -79,4 +82,8 @@ int Monster::getYMultFromDir(int dir){
 
 bool Monster::isAlive(){
     return alive;
+}
+
+void Monster::playKillSound(){
+    killSound.play();
 }

@@ -35,4 +35,5 @@ void Imp::kill(){
     alive=false;
     sprite->load("data/img/imp_dead.png");
     sprite->scale(1.3, 1.3);
+    playKillSound();
 }

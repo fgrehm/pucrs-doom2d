@@ -21,12 +21,16 @@ public:
     virtual void draw(cgf::Game* game) = 0;
 
     bool isAlive();
+    void playKillSound();
 
 protected:
 
     cgf::Sprite *sprite;
     int getXMultFromDir(int dir);
     int getYMultFromDir(int dir);
+
+    sf::SoundBuffer killSoundBuffer;
+    sf::Sound killSound;
 
     bool alive;
 
