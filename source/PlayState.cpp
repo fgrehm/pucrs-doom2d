@@ -174,11 +174,6 @@ void PlayState::update(cgf::Game* game)
                 break;
             }
 
-            // check against the player
-            if (prjspr->circleCollision(*(player->getSprite()))) {
-                killPlayer();
-            }
-
             // check against monsters
             bool i_wanna_cry = false;
             for (int j=0; j<monsters->monsters.size(); ++j){
@@ -429,7 +424,4 @@ void PlayState::draw(cgf::Game* game)
     items->draw(game);
 
     //screen->draw(text);
-}
-
-void PlayState::killPlayer(){
 }

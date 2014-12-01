@@ -64,8 +64,6 @@ private:
 
     bool checkCollision(u_int8_t layer, cgf::Game* game, cgf::Sprite* obj);
 
-    void killPlayer();
-
     sf::RenderWindow* screen;
     cgf::InputManager* im;
     tmx::MapLoader* map;
